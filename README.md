@@ -73,7 +73,25 @@ def register():
 #For Sign In
 
 def Signing_In():
-   return "\nWelcome Back"
+   
+   print("\nEnter the following details: ")
+   
+   name = input("\nName: ")
+   email = input("\nUser ID: ")
+   pwd = input("\nPassword: ")
+   
+   file = open("User_Data.txt",'r')
+   info = file.read()
+   info = info.split()
+   if name in info:
+      index = info.index(name) + 1
+      usr_password = info[index]
+      if usr_password == pwd:
+         return "Welcome Back, " + name
+      else:
+         return "Password entered is wrong"
+   else:
+      return "New User. Please Sign Up."
    
    
 print(choose())
