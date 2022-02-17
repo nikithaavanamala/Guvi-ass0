@@ -35,15 +35,19 @@ def check_userid(email):
 #start of main function program
 
 def choose():
-   choise = int(input("Press 1 for Signup \nPress 2 for Signin"))
+
+   choise = int(input("Press 1 for Signup \nPress 2 for Signin")
    
    if choise == 1:
-      return register()
    
+      return register()
+      
    elif choise == 2:
+      
       return Signing_In()
    
    else:
+   
       return "\nPlease re-enter your choise correctly"
 
 #For Sign UP
