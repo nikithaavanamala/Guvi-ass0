@@ -30,7 +30,7 @@ def check_email(userid):
    else:
       print("Invalid Email")
 
-#start of program
+#start of main function program
 
 def choose():
    choise = int(input("Press 1 for Signup \nPress 2 for Signin"))
@@ -47,7 +47,28 @@ def choose():
 #For Sign UP
 
 def register():
-   return "\nSuccessful"
+
+   print("\nEnter the following details: ")
+   
+   name = input("\nName: ")
+   email = input("\nUser ID: ")
+   pwd = input("\nPassword: ")
+   
+   if(check_userid(email) == "valid" and check_pass(pwd) == "valid"):
+   
+      file = open("User_Data.txt",'r')
+      info = file.read()
+      
+      if name in info:
+         return "Name Unavailable. Please Try Again"
+      file.close()
+      
+      file = open("User_Data.txt",'w')
+      info = name + " " + email + " " + password
+      file.write(info)
+      
+      return "Registration Successful" 
+   
 
 #For Sign In
 
