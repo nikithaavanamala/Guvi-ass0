@@ -36,7 +36,7 @@ def check_userid(email):
 
 def choose():
 
-   choise = int(input("Press 1 for Signup \nPress 2 for Signin")
+   choise = int(input("Press 1 for Signup \nPress 2 for Signin"))
    
    if choise == 1:
    
