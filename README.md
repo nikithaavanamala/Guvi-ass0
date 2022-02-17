@@ -1,11 +1,12 @@
 # Guvi-ass0
+
 #Registration and Login system with Python, file handling
 
 import re
 
 #password validation
 
-def checkpwd(passwd):
+def check_pass(passwd):
 	
 	reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
 
@@ -14,18 +15,18 @@ def checkpwd(passwd):
 	mat = re.search(pat, passwd)
 
 	if mat:
-		print("Password is valid.")
+		return "valid"
 	else:
 		print("Re-enter a new password.")
     
 #email validation
 
-def check_email(userid):
-   
+def check_userid(email):
+
    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
    
    if(re.fullmatch(regex, email)):
-      print("Valid Email")
+      return "valid"
       
    else:
       print("Invalid Email")
@@ -64,7 +65,7 @@ def register():
       file.close()
       
       file = open("User_Data.txt",'w')
-      info = name + " " + email + " " + password
+      info = name + " " + email + " " + pwd
       file.write(info)
       
       return "Registration Successful" 
@@ -83,14 +84,20 @@ def Signing_In():
    file = open("User_Data.txt",'r')
    info = file.read()
    info = info.split()
+   
    if name in info:
+   
       index = info.index(name) + 1
       usr_password = info[index]
+      
       if usr_password == pwd:
+      
          return "Welcome Back, " + name
       else:
+      
          return "Password entered is wrong"
    else:
+   
       return "New User. Please Sign Up."
    
    
