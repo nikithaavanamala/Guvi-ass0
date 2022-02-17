@@ -20,11 +20,39 @@ def checkpwd(passwd):
     
 #email validation
 
-def check(email):
+def check_email(userid):
    
    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
    
    if(re.fullmatch(regex, email)):
       print("Valid Email")
+      
    else:
       print("Invalid Email")
+
+#start of program
+
+def choose():
+   choise = int(input("Press 1 for Signup \nPress 2 for Signin"))
+   
+   if choise == 1:
+      return register()
+   
+   elif choise == 2:
+      return Signing_In()
+   
+   else:
+      return "\nPlease re-enter your choise correctly"
+
+#For Sign UP
+
+def register():
+   return "\nSuccessful"
+
+#For Sign In
+
+def Signing_In():
+   return "\nWelcome Back"
+   
+   
+print(choose())
