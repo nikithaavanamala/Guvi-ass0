@@ -1,10 +1,10 @@
 # Guvi-ass0
 
-#Registration and Login system with Python, file handling
+# Registration and Login system with Python, file handling
 
 import re
 
-#password validation
+# password validation
 
 def check_pass(passwd):
 	
@@ -19,7 +19,7 @@ def check_pass(passwd):
 	else:
 		print("Re-enter a new password.")
     
-#email validation
+# email validation
 
 def check_userid(email):
 
@@ -32,7 +32,7 @@ def check_userid(email):
       
       print("Invalid Email")
 
-#start of main function program
+# start of main function program
 
 def choose():
 
@@ -54,7 +54,7 @@ def choose():
    
       return "\nPlease re-enter your choise correctly"
 
-#For Sign UP
+# For Sign UP
 
 def register():
 
@@ -81,7 +81,7 @@ def register():
       return "Registration Successful" 
    
 
-#For Sign In
+# For Sign In
 
 def Signing_In():
    
