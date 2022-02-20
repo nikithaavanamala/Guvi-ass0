@@ -36,7 +36,7 @@ def check_userid(email):
 
 def choose():
 
-   choise = int(input("Press 1 for Signup \nPress 2 for Signin"))
+   choise = int(input("Press 1 for Signup \nPress 2 for Signin \nPess 3 for Forgot Password\n"))
    
    if choise == 1:
    
@@ -45,6 +45,10 @@ def choose():
    elif choise == 2:
       
       return Signing_In()
+
+   elif choise == 3:
+      
+      return Forget_Password()   
    
    else:
    
@@ -69,10 +73,11 @@ def register():
          return "Name Unavailable. Please Try Again"
       file.close()
       
-      file = open("User_Data.txt",'w')
-      info = name + " " + email + " " + pwd
+      file = open("User_Data.txt",'a')
+      info = "\n" + name + " " + email + " " + pwd
       file.write(info)
-      
+      file.close()
+
       return "Registration Successful" 
    
 
@@ -85,25 +90,43 @@ def Signing_In():
    name = input("\nName: ")
    email = input("\nUser ID: ")
    pwd = input("\nPassword: ")
-   
+    
    file = open("User_Data.txt",'r')
    info = file.read()
    info = info.split()
    
    if name in info:
-   
+      
       index = info.index(name) + 1
-      usr_password = info[index]
-      
+      usr_password = info[index]  
+
       if usr_password == pwd:
-      
          return "Welcome Back, " + name
-      else:
+
+      else :
+         return "Wrong email or password."
+          
+   else:
+      return "New User. Please Register First."
+   
+# For forget Password
+ 
+def Forget_Password():
+   print("\nEnter the following details: ")
+   
+   name = input("\nName: ")
+   email = input("\nUser ID: ")
+   
+   for line in open("User_Data.txt","r").readlines(): 
+        login_info = line.split()
+        if name == login_info[0] and email == login_info[1]:
+            pwd = login_info[2]
+            return "Your password is " + pwd
+      #else:
       
-         return "Password entered is wrong"
+         #return "Password entered is wrong"
    else:
    
-      return "New User. Please Sign Up."
-   
-   
+      return "New User. Please Register First."
+
 print(choose())
